@@ -1,7 +1,7 @@
 /**
  * Write a description of class NewsContent here.
  * 
- * @author Yuan Sun
+ * @author Group 6
  * @version 1.0
  */
 import java.io.IOException;
