@@ -4,19 +4,10 @@
  * @author Yuan Sun
  * @version 1.0
  */
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -29,12 +20,14 @@ public class NewsContent
     private NodeList nl;
     private Element eElement;
     private Node nNode;
+    private int maxID;
     /**
      * Constructor for objects of class NewsContent
      */
     public NewsContent()
     {
         ParseNews();
+        maxID = getCurrentID();
     }
     
     public void ParseNews()
@@ -54,7 +47,7 @@ public class NewsContent
     
     public String getTitle(int id)
     {
-        if(id > 0)
+        if(id > 0 && id <= maxID)
             id--;
         else
             return null;
@@ -63,7 +56,7 @@ public class NewsContent
     
     public String getContent(int id)
     {
-        if(id > 0)
+        if(id > 0 && id <= maxID)
             id--;
         else
             return null;
@@ -72,7 +65,7 @@ public class NewsContent
     
     public String getTime(int id)
     {
-        if(id > 0)
+        if(id > 0 && id <= maxID)
             id--;
         else
             return null;
