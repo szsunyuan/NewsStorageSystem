@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Database>
+	<NewsList>
+		<news id = "1">
+			<title>Man Turns Boeing 727 Into Home</title>
+			<body>A 64-year-old former electical engineer has turned a 727-200 passenger jet into his dream home.</body>
+			<date>
+				<year>2014</year>
+				<month>6</month>
+				<day>8</day>
+				<time>18:40</time>
+			</date>
+			<rating>
+				<like>46</like>
+				<dislike>3</dislike>
+			</rating>
+		</news>
+		<news id = "2">
+			<title>Appleby Westward Group Limited Paris Retailer: Mark Oliver Supports ACS</title>
+			<body>Mark Oliver, who runs a SPAR store in Sturminster Marshall, Dorset, was among the audience at the recent top level Heart of the Community Conference in London, organised by the Association of Convenience Stores.</body>
+			<date>
+				<year>2014</year>
+				<month>6</month>
+				<day>16</day>
+				<time>08:35</time>
+			</date>
+			<rating>
+				<like>127</like>
+				<dislike>44</dislike>
+			</rating>
+		</news>
+	</NewsList>
+	<Categories>
+		<category name = "Engineering">
+			<id>1</id>
+		</category>
+		<category name = "Economy">
+			<id>2</id>
+		</category>
+		<category name = "Crime">
+		</category>
+	</Categories>
+	<Locations>
+		<location name = "United States">
+			<id>1</id>
+			<id>2</id>
+		</location>
+		<location name = "Canada">
+		</location>
+		<location name = "China">
+		</location>
+	</Locations>
+	<Sources>
+		<source id = "1">
+			<name>Yahoo! News</name>
+			<link>http://news.yahoo.com/</link>
+		</source>
+		<source id = "2">
+			<name>CNN</name>
+			<link>http://www.cnn.com/</link>
+		</source>
+		<source id = "3">
+			<name>Google News</name>
+			<link>http://news.google.com/</link>
+		</source>
+		<source id = "4">
+			<name>New York Times</name>
+			<link>http://www.nytimes.com/</link>
+		</source>
+		<source id = "5">
+			<name>NBC News</name>
+			<link>http://www.nbcnews.com/</link>
+		</source>
+	</Sources>
+</Database>
