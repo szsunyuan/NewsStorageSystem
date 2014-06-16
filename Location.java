@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -37,7 +36,6 @@ public class Location
     {
         ParseLocation();
         maxID = getLocationCount();
-        addNewsToLocation(7,"US");
     }
     
     public void ParseLocation()
@@ -92,9 +90,20 @@ public class Location
             else {
                 eElement.getElementsByTagName("ids").item(index).setTextContent(eElement.getElementsByTagName("ids").item(index).getTextContent() + "," + Integer.toString(id));
             }
-            System.out.println(eElement.getElementsByTagName("ids").item(index).getTextContent());
+            try {
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(dom);
+                StreamResult file = new StreamResult(new File("database.xml"));
+                transformer.transform(source, file);
+                return true;
+            }catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
         }
-        return true;
+        else
+            return false;
     }
     
     public int getLocationCount()
