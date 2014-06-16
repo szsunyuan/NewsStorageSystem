@@ -31,23 +31,31 @@
 		</news>
 	</NewsList>
 	<Categories>
-		<category name = "Engineering">
-			<id>1</id>
+		<category>
+			<name>Engineering</name>
+			<ids>1</ids>
 		</category>
-		<category name = "Economy">
-			<id>2</id>
+		<category>
+			<name>Economy</name>
+			<ids>2</ids>
 		</category>
-		<category name = "Crime">
+		<category>
+			<name>Crime</name>
+			<ids></ids>
 		</category>
 	</Categories>
 	<Locations>
-		<location name = "United States">
-			<id>1</id>
-			<id>2</id>
+		<location>
+			<name>United States</name>
+			<ids>1,2</ids>
 		</location>
-		<location name = "Canada">
+		<location>
+			<name>Canada</name>
+			<ids></ids>
 		</location>
-		<location name = "China">
+		<location>
+			<name>China</name>
+			<ids></ids>
 		</location>
 	</Locations>
 	<Sources>

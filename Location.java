@@ -37,8 +37,7 @@ public class Location
     {
         ParseLocation();
         maxID = getLocationCount();
-        System.out.println(searchLocation("China"));
-        System.out.println(getNewsFromLocation("Chisa"));
+        addNewsToLocation(7,"US");
     }
     
     public void ParseLocation()
@@ -83,8 +82,18 @@ public class Location
         return newsList;
     }
     
-    public boolean addNewsToLocation(String name)
+    public boolean addNewsToLocation(int id,String name)
     {
+        int index = searchLocation(name);
+        if(id > 0 && index != -1) {
+            index--;
+            if(eElement.getElementsByTagName("ids").item(index).getTextContent().isEmpty())
+                eElement.getElementsByTagName("ids").item(index).setTextContent(Integer.toString(id));
+            else {
+                eElement.getElementsByTagName("ids").item(index).setTextContent(eElement.getElementsByTagName("ids").item(index).getTextContent() + "," + Integer.toString(id));
+            }
+            System.out.println(eElement.getElementsByTagName("ids").item(index).getTextContent());
+        }
         return true;
     }
     
