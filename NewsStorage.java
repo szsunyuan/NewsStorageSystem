@@ -1,5 +1,5 @@
 /**
- * Write a description of class NewsStorage here.
+ * NewsStorage handles reading and editing the news related information in the database.
  * 
  * @author Group 6
  * @version 1.0
@@ -36,6 +36,9 @@ public class NewsStorage
         maxID = getCurrentID();
     }
     
+    /**
+     * ParseNews is a method used for reading the database.xml file.
+     */
     public void ParseNews()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -51,6 +54,12 @@ public class NewsStorage
         }
     }
     
+    /**
+     * addNewsToFile is a simulated process for adding the newly pulled news to the database file.
+     * 
+     * @param ele A Node sent from the News class containing all the information of the news.
+     * @return Returns the ID number of the newly added news back to News class.
+     */
     public int addNewsToFile(Element ele)
     {
         if(ele != null) {
@@ -83,13 +92,26 @@ public class NewsStorage
             return -1;
     }
     
-    public Element createNode(String name,String content)
+    /**
+     * createNode is used within NewsStorage class for generating a node containing neccessary information(not important,just for easy implementation).
+     * 
+     * @param name Name of the tag that needed to be added to the database.
+     * @param content Content of the node that needed to be added.
+     * @return Returns a processed node containing neccessary information for adding.
+     */
+    private Element createNode(String name,String content)
     {
         Element newNode = dom.createElement(name);
         newNode.setTextContent(content);
         return newNode;
     }
     
+    /**
+     * getTitle will return the title of the specified news.
+     * 
+     * @param id ID number of the news.
+     * @return Returns the title of the news that is being passed.
+     */
     public String getTitle(int id)
     {
         if(id > 0 && id <= maxID)
@@ -99,6 +121,12 @@ public class NewsStorage
         return eElement.getElementsByTagName("title").item(id).getTextContent();
     }
     
+    /**
+     * getContent will return the content of the given news.
+     * 
+     * @param id ID number of the news.
+     * @return Returns the content of the news that is being passed.
+     */
     public String getContent(int id)
     {
         if(id > 0 && id <= maxID)
@@ -108,6 +136,12 @@ public class NewsStorage
         return eElement.getElementsByTagName("body").item(id).getTextContent();
     }
     
+    /**
+     * getTime will return a formatted time when the expected news happened.
+     * 
+     * @param id ID number of the news.
+     * @return Returns a string representation of the time when the news happened.
+     */
     public String getTime(int id)
     {
         if(id > 0 && id <= maxID)
@@ -120,6 +154,11 @@ public class NewsStorage
             eElement.getElementsByTagName("time").item(id).getTextContent();
     }
     
+    /**
+     * getCurrentID will return the current count of the news that is in the database.
+     * 
+     * @return Returns the count of the news in the database.
+     */
     public int getCurrentID()
     {
         return eElement.getElementsByTagName("news").getLength();

@@ -1,6 +1,5 @@
-
 /**
- * Write a description of class News here.
+ * News class is used when a request has been sent from the controller to the database for making changes on the database.
  * 
  * @author Group 6
  * @version 1.0
@@ -24,7 +23,9 @@ public class News
     private String fileName;
     
     /**
-     * Constructor for objects of class News
+     * Constructor for objects of class News.
+     * 
+     * @param fileName Name of the xml file which is simulating the request from the controller.
      */
     public News(String fileName)
     {
@@ -34,6 +35,11 @@ public class News
         updateLocation(currentNewsID);
     }
     
+    /**
+     * addNews is called once a request has been sent, with a given file name.
+     * 
+     * @return Returns the ID number of the newly added news.
+     */
     public int addNews()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -52,12 +58,24 @@ public class News
         }
     }
     
+    /**
+     * updateCategory is used for updating the category list once the news has been added to the database.
+     * 
+     * @param id ID number of the newly added news.
+     * @return Returns if the update process is successful.
+     */
     public boolean updateCategory(int id)
     {
         Category cat = new Category();
         return cat.addNewsToCategory(id,eElement.getElementsByTagName("category").item(0).getTextContent());
     }
     
+    /**
+     * updateLocation is used for updating the location list once the news has been added to the database.
+     * 
+     * @param id ID number of the newly added news.
+     * @return Returns if the update process is successful.
+     */
     public boolean updateLocation(int id)
     {
         Location loc = new Location();

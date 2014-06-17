@@ -1,5 +1,5 @@
 /**
- * Write a description of class Location here.
+ * Location class will process the request for editing locations in the database. Assuming all the locations already exist in the database(a complete list).
  * 
  * @author Group 6
  * @version 1.0
@@ -38,6 +38,9 @@ public class Location
         maxID = getLocationCount();
     }
     
+    /**
+     * ParseLocation is a method used for reading the locations from the database.xml file.
+     */
     public void ParseLocation()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -53,6 +56,12 @@ public class Location
         }
     }
     
+    /**
+     * searchLocation is used for searching a given location name.
+     * 
+     * @param name Name of the location that is passed for searching.
+     * @return Returns the location ID of the given name.
+     */
     public int searchLocation(String name)
     {
         if(name.length() > 0) {
@@ -66,6 +75,12 @@ public class Location
             return -1;
     }
     
+    /**
+     * getNewsFromLocation will generate an ArrayList of news IDs of the given location name.
+     * 
+     * @param name Name of the expected location.
+     * @return Returns an ArrayList of news IDs under the specified location.
+     */
     public ArrayList<Integer> getNewsFromLocation(String name)
     {
         int index = searchLocation(name);
@@ -80,6 +95,13 @@ public class Location
         return newsList;
     }
     
+    /**
+     * addNewsToLocation will save the updated news list under the specified location.
+     * 
+     * @param id ID number of the news being added.
+     * @param name Name of the location that the news belongs to.
+     * @return Returns if the adding process is successful.
+     */
     public boolean addNewsToLocation(int id,String name)
     {
         int index = searchLocation(name);
@@ -106,6 +128,11 @@ public class Location
             return false;
     }
     
+    /**
+     * getLocationCount will return the count of different locations in the database.
+     * 
+     * @return Return the count of the locations.
+     */
     public int getLocationCount()
     {
         return eElement.getElementsByTagName("location").getLength();

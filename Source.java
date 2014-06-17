@@ -1,5 +1,6 @@
 /**
- * Write a description of class Source here.
+ * Class Source is used to process and store the RSS sources in the database.There is no error-check on the name or the link
+ * of the source. Assuming this process is handled by admin and everything passed is verified.
  * 
  * @author Group 6
  * @version 1.0
@@ -38,6 +39,9 @@ public class Source
         maxID = getSourceCount();
     }
     
+    /**
+     * ParseSource is a method used for reading the database.xml file.
+     */
     public void ParseSource()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -53,6 +57,12 @@ public class Source
         }
     }
     
+    /**
+     * getSourceName is a method for extracting the name of the source based on the source id(starts from 1).
+     * 
+     * @param id ID number of the expected source.
+     * @return Returns a String representation of the name of the source.
+     */
     public String getSourceName(int id)
     {
         if(id > 0 && id <= maxID)
@@ -62,6 +72,13 @@ public class Source
         return eElement.getElementsByTagName("name").item(id).getTextContent();
     }
     
+    /**
+     * setSourceName is the method for editing the name of the source.
+     * 
+     * @param id ID number of the expected source.
+     * @param name Name of the source that expected to changed to.
+     * @return Returns a boolean variable stating if the change is successful.
+     */
     public boolean setSourceName(int id,String name)
     {
         if(id <= 0 || id > maxID || name.length() < 1)
@@ -83,6 +100,12 @@ public class Source
         }
     }
     
+    /**
+     * getSourceLink is a method for extracting the http address of the source based on the source id(starts from 1).
+     * 
+     * @param id ID number of the expected source.
+     * @return Returns a String representation of the link of the source.
+     */
     public String getSourceLink(int id)
     {
         if(id > 0 && id <= maxID)
@@ -92,6 +115,13 @@ public class Source
         return eElement.getElementsByTagName("link").item(id).getTextContent();
     }
     
+    /**
+     * setSourceLink is the method for editing the http link of the source.
+     * 
+     * @param id ID number of the expected source.
+     * @param link Link of the source that expected to changed to.
+     * @return Returns a boolean variable stating if the change is successful.
+     */
     public boolean setSourceLink(int id,String link)
     {
         if(id <= 0 || id > maxID || link.length() < 1)
@@ -113,6 +143,13 @@ public class Source
         }
     }
     
+    /**
+     * addSource method is used to add a new source to the database.
+     * 
+     * @param name Name of the source that needed to be added.
+     * @param link Link of the source that needed to be added.
+     * @return Returns a boolean variable stating if the adding is successful.
+     */
     public boolean addSource(String name,String link)
     {
         try {
@@ -142,6 +179,12 @@ public class Source
         }
     }
     
+    /**
+     * removeSource method is used to remove an existing source to the database.
+     * 
+     * @param id ID number of the source that needed to be removed
+     * @return Returns a boolean variable stating if the removing is successful.
+     */
     public boolean removeSource(int id)
     {
         try {
@@ -163,6 +206,11 @@ public class Source
         }
     }
     
+    /**
+     * getSourceCount is used to get the current number of sources that is in the database.
+     * 
+     * @return Returns the count of sources in the database.
+     */
     public int getSourceCount()
     {
         return eElement.getElementsByTagName("source").getLength();

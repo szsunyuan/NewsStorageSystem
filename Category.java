@@ -1,5 +1,5 @@
 /**
- * Write a description of class Location here.
+ * Category class will process the request for editing categories in the database. Assuming all the categories already exist in the database(a complete list).
  * 
  * @author Group 6
  * @version 1.0
@@ -38,6 +38,9 @@ public class Category
         maxID = getCategoryCount();
     }
     
+    /**
+     * ParseCategory is a method used for reading the categories from the database.xml file.
+     */
     public void ParseCategory()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -53,6 +56,12 @@ public class Category
         }
     }
     
+    /**
+     * searchCategory is used for searching a given category name.
+     * 
+     * @param name Name of the category that is passed for searching.
+     * @return Returns the category ID of the given name.
+     */
     public int searchCategory(String name)
     {
         if(name.length() > 0) {
@@ -66,6 +75,12 @@ public class Category
             return -1;
     }
     
+    /**
+     * getNewsFromCategory will generate an ArrayList of news IDs of the given category name.
+     * 
+     * @param name Name of the expected category.
+     * @return Returns an ArrayList of news IDs under the specified category.
+     */
     public ArrayList<Integer> getNewsFromCategory(String name)
     {
         int index = searchCategory(name);
@@ -80,6 +95,13 @@ public class Category
         return newsList;
     }
     
+    /**
+     * addNewsToCategory will save the updated news list under the specified category.
+     * 
+     * @param id ID number of the news being added.
+     * @param name Name of the category that the news belongs to.
+     * @return Returns if the adding process is successful.
+     */
     public boolean addNewsToCategory(int id,String name)
     {
         int index = searchCategory(name);
@@ -106,6 +128,11 @@ public class Category
             return false;
     }
     
+    /**
+     * getCategoryCount will return the count of different categories in the database.
+     * 
+     * @return Return the count of the categories.
+     */
     public int getCategoryCount()
     {
         return eElement.getElementsByTagName("category").getLength();

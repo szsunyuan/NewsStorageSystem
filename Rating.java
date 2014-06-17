@@ -1,6 +1,5 @@
-
 /**
- * Write a description of class Rating here.
+ * This Rating class handles the "like" and "dislike" button in the system. It keeps track of both like and dislike for each piece of news.
  * 
  * @author Group 6
  * @version 1.0
@@ -38,6 +37,9 @@ public class Rating
         maxID = nc.getCurrentID();
     }
     
+    /**
+     * ParseNews is a method used for reading the database.xml file.
+     */
     public void ParseNews()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -53,6 +55,12 @@ public class Rating
         }
     }
     
+    /**
+     * getLike is used to get the count of the "like" given a specified news id.
+     * 
+     * @param id ID of the expected news.
+     * @return Returns the count of the "like" of the given news.
+     */
     public int getLike(int id)
     {
         if(id > 0 && id <= maxID)
@@ -62,6 +70,12 @@ public class Rating
         return Integer.parseInt(eElement.getElementsByTagName("like").item(id).getTextContent());
     }
     
+    /**
+     * incrementLike will increment the count of "like" once called.
+     * 
+     * @param id ID of the expected news.
+     * @return Returns if the increment on "like" is successful.
+     */
     public boolean incrementLike(int id)
     {
         int like = getLike(id);
@@ -85,6 +99,12 @@ public class Rating
         }
     }
     
+    /**
+     * getDislike is used to get the count of the "dislike" given a specified news id.
+     * 
+     * @param id ID of the expected news.
+     * @return Returns the count of the "dislike" of the given news.
+     */
     public int getDislike(int id)
     {
         if(id > 0 && id <= maxID)
@@ -94,6 +114,12 @@ public class Rating
         return Integer.parseInt(eElement.getElementsByTagName("dislike").item(id).getTextContent());
     }
     
+    /**
+     * incrementDislike will increment the count of "dislike" once called.
+     * 
+     * @param id ID of the expected news.
+     * @return Returns if the increment on "dislike" is successful.
+     */
     public boolean incrementDislike(int id)
     {
         int dislike = getDislike(id);
