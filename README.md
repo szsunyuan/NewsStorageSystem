@@ -2,7 +2,7 @@ NewsStorageSystem
 =================
 Progress:
 1. Code for the subsystem is done, as well as the Javadoc.
-2. Some basic testings have been carried out during the implementation process. Myles and Marc are working on the JUnit testing.
+2. 2. Some basic testings have been carried out during the implementation process. Myles and Marc are working on the JUnit testing.
 
 Issues:
 1. Adding/removing a node from the database will mess up the format of the file(it's still a valid xml file, just not easy for reading).
