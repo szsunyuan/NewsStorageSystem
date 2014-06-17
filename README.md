@@ -20,11 +20,9 @@ Issues:
 2. Removing a node with id attribute will cause the numbering of nodes to have gap. For example:
 
  --Before--(each bracket represent a node)
-
  <1.ab><2.cd><3.ef><4.gh> etc.
 
  --After--(delete node 2)
-
  <1.ab><3.ef><4.gh> etc.
 
 
