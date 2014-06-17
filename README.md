@@ -18,10 +18,14 @@ Issues:
 1. Adding/removing a node from the database will mess up the format of the file(it's still a valid xml file, just not easy for reading).
 
 2. Removing a node with id attribute will cause the numbering of nodes to have gap. For example:
---Before--(each bracket represent a node)
-<1.ab><2.cd><3.ef><4.gh> etc.
---After--(delete node 2)
-<1.ab><3.ef><4.gh> etc.
+
+ --Before--(each bracket represent a node)
+
+ <1.ab><2.cd><3.ef><4.gh> etc.
+
+ --After--(delete node 2)
+
+ <1.ab><3.ef><4.gh> etc.
 
 
 
