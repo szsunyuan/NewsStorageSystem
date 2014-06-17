@@ -29,10 +29,12 @@ public class News
     public News(String fileName)
     {
         this.fileName = fileName;
-        addNews();
+        int currentNewsID = addNews();
+        updateCategory(currentNewsID);
+        updateLocation(currentNewsID);
     }
     
-    public boolean addNews()
+    public int addNews()
     {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
@@ -43,13 +45,22 @@ public class News
             nNode = nl.item(0);
             eElement = (Element) nNode;
             NewsStorage store = new NewsStorage();
-            if(store.addNewsToFile(eElement))
-                return true;
-            else
-                return false;
+            return store.addNewsToFile(eElement);
         }catch(ParserConfigurationException | SAXException | IOException e) {
             System.out.println(e);
-            return false;
+            return -1;
         }
+    }
+    
+    public boolean updateCategory(int id)
+    {
+        Category cat = new Category();
+        return cat.addNewsToCategory(id,eElement.getElementsByTagName("category").item(0).getTextContent());
+    }
+    
+    public boolean updateLocation(int id)
+    {
+        Location loc = new Location();
+        return loc.addNewsToLocation(id,eElement.getElementsByTagName("location").item(0).getTextContent());
     }
 }

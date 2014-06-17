@@ -51,7 +51,7 @@ public class NewsStorage
         }
     }
     
-    public boolean addNewsToFile(Element ele)
+    public int addNewsToFile(Element ele)
     {
         if(ele != null) {
             int id = getCurrentID()+1;
@@ -64,12 +64,8 @@ public class NewsStorage
             newsNode.appendChild(createNode("day",ele.getElementsByTagName("day").item(0).getTextContent()));
             newsNode.appendChild(createNode("time",ele.getElementsByTagName("time").item(0).getTextContent()));
             newsNode.appendChild(createNode("like","0"));
-            newsNode.appendChild(createNode("body","0"));
+            newsNode.appendChild(createNode("dislike","0"));
             nNode.appendChild(newsNode);
-            Category cat = new Category();
-            Location loc = new Location();
-            cat.addNewsToCategory(id,ele.getElementsByTagName("category").item(0).getTextContent());
-            loc.addNewsToLocation(id,ele.getElementsByTagName("location").item(0).getTextContent());
             try {
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
@@ -77,14 +73,14 @@ public class NewsStorage
                 DOMSource source = new DOMSource(dom);
                 StreamResult file = new StreamResult(new File("database.xml"));
                 transformer.transform(source, file);
-                return true;
+                return id;
             }catch (Exception e) {
                 e.printStackTrace();
-                return false;
+                return -1;
             }
         }
         else
-            return false;
+            return -1;
     }
     
     public Element createNode(String name,String content)
