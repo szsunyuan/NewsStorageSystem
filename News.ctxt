@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=fileName
+comment0.target=News(java.lang.String)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ News\r\n
+comment1.params=
+comment1.target=boolean\ addNews()
+numComments=2

@@ -26,7 +26,7 @@ public class Rating
     private NodeList nl;
     private Element eElement;
     private Node nNode;
-    private NewsContent nc;
+    private NewsStorage nc;
     private int maxID;
     /**
      * Constructor for objects of class Rating
@@ -34,7 +34,7 @@ public class Rating
     public Rating()
     {
         ParseNews();
-        nc = new NewsContent();
+        nc = new NewsStorage();
         maxID = nc.getCurrentID();
     }
     
